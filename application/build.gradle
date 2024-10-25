@@ -1,40 +1,51 @@
 plugins {
-	id 'org.springframework.boot' version '3.2.2'
-	id 'io.spring.dependency-management' version '1.1.4'
-	id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+    sourceCompatibility = '17'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation project(':library')
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.3.5'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-rest
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '3.3.5'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+    implementation project(':library')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-allprojects {
-  apply {
-      plugin("project-report")
-  }
-}
-tasks.register("projectReportAll") {
-        // All project reports of subprojects
-        allprojects.forEach {
-            dependsOn(it.tasks.getAt("projectReport"))
-        }
-    
-        // All projectReportAll of included builds
-        gradle.includedBuilds.forEach {
-            dependsOn(it.task(":projectReportAll"))
-        }
+
+allprojects {
+    apply {
+        plugin("project-report")
     }
+}
+
+tasks.register("projectReportAll") {
+    // All project reports of subprojects
+    allprojects.forEach {
+        dependsOn(it.tasks.getAt("projectReport"))
+    }
+
+    // All projectReportAll of included builds
+    gradle.includedBuilds.forEach {
+        dependsOn(it.task(":projectReportAll"))
+    }
+}
