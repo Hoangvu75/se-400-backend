@@ -1,39 +1,44 @@
 package com.example.multimodule.application.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "special_info")
 public class SpecialInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "specialinfo_id")
-    private int id;
+    String id;
 
     @OneToOne  // Nếu mỗi Wishlist chỉ có một User
     @JoinColumn(name = "user_id")
-    private User user;
+    User user;
 
     @Column(name = "year_college")
-    private String yearCollege;
+    String yearCollege;
 
     @Column
-    private String major;
+    String major;
 
     @Column
-    private String address;
+    String address;
 
     @Column(name = "point_communicate")
-    private int pointCommunicate;
+    int pointCommunicate;
 
     @Column(name = "point_experience")
-    private int pointExperience;
+    int pointExperience;
 
     @Column(name = "point_economy")
-    private int pointEconomy;
+    int pointEconomy;
 
     @Column(name = "point_expertise")
-    private int pointExpertise;
+    int pointExpertise;
 }

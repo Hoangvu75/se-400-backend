@@ -1,42 +1,47 @@
 package com.example.multimodule.application.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "employer")
 public class Employer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "employer_id")
-    private int id;
+    String id;
 
     @Column
-    private String name;
+    String name;
 
     @Column
-    private String email;
+    String email;
 
     @Column(name = "phone_number")
-    private String phoneNumber;
+    String phoneNumber;
 
     @Column
-    private String description;
+    String description;
 
     @Column(name = "contact_info")
-    private String contactInfo;
+    String contactInfo;
 
     @Column(name = "job_list")
     @OneToMany(mappedBy = "employer", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    private List<Job>jobList;
+    List<Job> jobList;
 
 
     @Column(name = "application_list")
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = {
-            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH , CascadeType.DETACH
+            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH
     })
-    private List<Application> applicationList;
+    List<Application> applicationList;
 }

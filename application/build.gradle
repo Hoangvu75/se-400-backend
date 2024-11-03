@@ -29,6 +29,25 @@ dependencies {
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
     implementation project(':library')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.security:spring-security-crypto'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.session:spring-session-core'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // Lombok and MapStruct dependencies
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 }
 
 
@@ -48,4 +67,19 @@ tasks.register("projectReportAll") {
     gradle.includedBuilds.forEach {
         dependsOn(it.task(":projectReportAll"))
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Amapstruct.suppressGeneratorTimestamp=true"
+    options.compilerArgs << "-Amapstruct.defaultComponentModel=spring"
+    options.compilerArgs << "-Amapstruct.verbose=true"
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = false
 }

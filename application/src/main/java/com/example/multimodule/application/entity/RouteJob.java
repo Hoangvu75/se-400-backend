@@ -1,25 +1,30 @@
 package com.example.multimodule.application.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "route_job")
 public class RouteJob {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "route_id")
-    private int id;
+    String id;
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    User user;
 
     @Column
-    private int duration;
+    int duration;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST
@@ -29,7 +34,7 @@ public class RouteJob {
             joinColumns = @JoinColumn(name = "route_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id")
     )
-    private List<Job> jobProcess;
+    List<Job> jobProcess;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST
@@ -39,8 +44,8 @@ public class RouteJob {
             joinColumns = @JoinColumn(name = "route_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private List<Category> proposedRoute;
+    List<Category> proposedRoute;
 
     @ElementCollection
-    private List<Integer> pointValue;
+    List<Integer> pointValue;
 }
