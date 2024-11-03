@@ -1,30 +1,35 @@
 package com.example.multimodule.application.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "category")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "category_id")
-    private int id;
+    String id;
 
     @Column
-    private String name;
+    String name;
 
     @Column
-    private String description;
+    String description;
 
     @Column
     @OneToMany(mappedBy = "jobCategory", fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH
     })
-    private List<Job> jobCategory;
+    List<Job> jobCategory;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST
@@ -34,6 +39,6 @@ public class Category {
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "route_id")
     )
-    private List<RouteJob> routeList;
+    List<RouteJob> routeList;
 
 }

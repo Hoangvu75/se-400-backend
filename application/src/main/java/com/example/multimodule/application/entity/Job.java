@@ -1,64 +1,69 @@
 package com.example.multimodule.application.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "job")
 public class Job {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "job_id")
-    private int id;
+    String id;
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH
     })
     @JoinColumn(name = "user_id", nullable = true)
-    private User user;
+    User user;
 
     @Column
-    private String name;
+    String name;
 
     @Column
-    private String description;
+    String description;
 
     @Column(name = "recruited_date")
-    private Date recruitedDate;
+    Date recruitedDate;
 
     @Column(name = "accepted_date")
-    private Date acceptedDate;
+    Date acceptedDate;
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH
     })
     @JoinColumn(name = "job_category", nullable = false)
-    private Category jobCategory;
+    Category jobCategory;
 
     @Column
-    private double wage;
+    double wage;
 
     @Column
-    private String address;
+    String address;
 
     @Column(name = "contact_info")
-    private String contactInfo;
+    String contactInfo;
 
     @Column
-    private String requirements;
+    String requirements;
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH
     })
     @JoinColumn(name = "employer_id", nullable = false)
-    private Employer employer;
+    Employer employer;
 
     @ElementCollection
-    private List<Workship> schedule;
+    List<Workship> schedule;
 }

@@ -1,6 +1,6 @@
 package com.example.multimodule.application.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Workship {
