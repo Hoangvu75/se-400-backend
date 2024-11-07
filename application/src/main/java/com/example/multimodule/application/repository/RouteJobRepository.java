@@ -2,7 +2,7 @@ package com.example.multimodule.application.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import uit.se121.FiPT.entity.RouteJob;
+import com.example.multimodule.application.entity.RouteJob;
 
 @Repository
 public interface RouteJobRepository extends JpaRepository<RouteJob, String> {

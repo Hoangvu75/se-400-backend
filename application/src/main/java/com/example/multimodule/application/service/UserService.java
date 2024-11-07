@@ -1,6 +1,15 @@
 package com.example.multimodule.application.service;
 
 
+import com.example.multimodule.application.dto.request.UserCreationRequest;
+import com.example.multimodule.application.dto.request.UserUpdateRequest;
+import com.example.multimodule.application.dto.response.UserResponse;
+import com.example.multimodule.application.entity.User;
+import com.example.multimodule.application.enums.Role;
+import com.example.multimodule.application.exception.AppException;
+import com.example.multimodule.application.exception.ErrorCode;
+import com.example.multimodule.application.mapper.UserMapper;
+import com.example.multimodule.application.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -10,15 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import uit.se121.FiPT.dto.request.UserCreationRequest;
-import uit.se121.FiPT.dto.request.UserUpdateRequest;
-import uit.se121.FiPT.dto.response.UserResponse;
-import uit.se121.FiPT.entity.User;
-import uit.se121.FiPT.enums.Role;
-import uit.se121.FiPT.exception.AppException;
-import uit.se121.FiPT.exception.ErrorCode;
-import uit.se121.FiPT.mapper.UserMapper;
-import uit.se121.FiPT.repository.UserRepository;
+
 
 import java.util.HashSet;
 import java.util.List;

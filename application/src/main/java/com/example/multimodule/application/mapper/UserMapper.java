@@ -1,13 +1,14 @@
 package com.example.multimodule.application.mapper;
 
 
+import com.example.multimodule.application.dto.request.UserCreationRequest;
+import com.example.multimodule.application.dto.request.UserUpdateRequest;
+import com.example.multimodule.application.dto.response.UserResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-import uit.se121.FiPT.dto.request.UserCreationRequest;
-import uit.se121.FiPT.dto.request.UserUpdateRequest;
-import uit.se121.FiPT.dto.response.UserResponse;
-import uit.se121.FiPT.entity.User;
+
+import com.example.multimodule.application.entity.User;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
