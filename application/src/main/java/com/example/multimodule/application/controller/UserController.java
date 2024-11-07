@@ -1,5 +1,10 @@
 package com.example.multimodule.application.controller;
 
+import com.example.multimodule.application.dto.request.ApiResponse;
+import com.example.multimodule.application.dto.request.UserCreationRequest;
+import com.example.multimodule.application.dto.request.UserUpdateRequest;
+import com.example.multimodule.application.dto.response.UserResponse;
+import com.example.multimodule.application.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -7,11 +12,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import uit.se121.FiPT.dto.request.ApiResponse;
-import uit.se121.FiPT.dto.request.UserCreationRequest;
-import uit.se121.FiPT.dto.request.UserUpdateRequest;
-import uit.se121.FiPT.dto.response.UserResponse;
-import uit.se121.FiPT.service.UserService;
+
 
 import java.util.List;
 

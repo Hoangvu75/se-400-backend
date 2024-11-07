@@ -1,6 +1,12 @@
 package com.example.multimodule.application.controller;
 
 
+import com.example.multimodule.application.dto.request.ApiResponse;
+import com.example.multimodule.application.dto.request.AuthenticationRequest;
+import com.example.multimodule.application.dto.request.IntrospectRequest;
+import com.example.multimodule.application.dto.response.AuthenticationResponse;
+import com.example.multimodule.application.dto.response.IntrospectResponse;
+import com.example.multimodule.application.service.AuthenticationService;
 import com.nimbusds.jose.JOSEException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -9,12 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import uit.se121.FiPT.dto.request.ApiResponse;
-import uit.se121.FiPT.dto.request.AuthenticationRequest;
-import uit.se121.FiPT.dto.request.IntrospectRequest;
-import uit.se121.FiPT.dto.response.AuthenticationResponse;
-import uit.se121.FiPT.dto.response.IntrospectResponse;
-import uit.se121.FiPT.service.AuthenticationService;
+
 
 import java.text.ParseException;
 

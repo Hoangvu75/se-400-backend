@@ -1,5 +1,13 @@
 package com.example.multimodule.application.service;
 
+import com.example.multimodule.application.dto.request.AuthenticationRequest;
+import com.example.multimodule.application.dto.request.IntrospectRequest;
+import com.example.multimodule.application.dto.response.AuthenticationResponse;
+import com.example.multimodule.application.dto.response.IntrospectResponse;
+import com.example.multimodule.application.entity.User;
+import com.example.multimodule.application.exception.AppException;
+import com.example.multimodule.application.exception.ErrorCode;
+import com.example.multimodule.application.repository.UserRepository;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -15,14 +23,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import uit.se121.FiPT.dto.request.AuthenticationRequest;
-import uit.se121.FiPT.dto.request.IntrospectRequest;
-import uit.se121.FiPT.dto.response.AuthenticationResponse;
-import uit.se121.FiPT.dto.response.IntrospectResponse;
-import uit.se121.FiPT.entity.User;
-import uit.se121.FiPT.exception.AppException;
-import uit.se121.FiPT.exception.ErrorCode;
-import uit.se121.FiPT.repository.UserRepository;
+
 
 import java.text.ParseException;
 import java.time.Instant;
