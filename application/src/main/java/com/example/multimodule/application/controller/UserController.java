@@ -1,6 +1,6 @@
 package com.example.multimodule.application.controller;
 
-import com.example.multimodule.application.dto.request.ApiResponse;
+import com.example.multimodule.application.dto.response.ApiResponse;
 import com.example.multimodule.application.dto.request.UserCreationRequest;
 import com.example.multimodule.application.dto.request.UserUpdateRequest;
 import com.example.multimodule.application.dto.response.UserResponse;

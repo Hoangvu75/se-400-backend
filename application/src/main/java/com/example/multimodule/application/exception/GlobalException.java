@@ -1,6 +1,6 @@
 package com.example.multimodule.application.exception;
 
-import com.example.multimodule.application.dto.request.ApiResponse;
+import com.example.multimodule.application.dto.response.ApiResponse;
 import jakarta.validation.ConstraintViolation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

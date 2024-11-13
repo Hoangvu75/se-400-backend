@@ -1,7 +1,7 @@
 package com.example.multimodule.application.controller;
 
 
-import com.example.multimodule.application.dto.request.ApiResponse;
+import com.example.multimodule.application.dto.response.ApiResponse;
 import com.example.multimodule.application.dto.request.AuthenticationRequest;
 import com.example.multimodule.application.dto.request.IntrospectRequest;
 import com.example.multimodule.application.dto.response.AuthenticationResponse;
