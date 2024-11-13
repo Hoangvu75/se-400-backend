@@ -1,6 +1,9 @@
 package com.example.multimodule.application.config;
 
 
+import com.example.multimodule.application.entity.User;
+import com.example.multimodule.application.enums.Role;
+import com.example.multimodule.application.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -9,9 +12,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import uit.se121.FiPT.entity.User;
-import uit.se121.FiPT.enums.Role;
-import uit.se121.FiPT.repository.UserRepository;
+
 
 import java.util.HashSet;
 

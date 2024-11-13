@@ -1,4 +1,4 @@
-package com.example.multimodule.application.dto.request;
+package com.example.multimodule.application.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
